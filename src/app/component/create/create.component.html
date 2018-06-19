@@ -35,7 +35,7 @@
                  class="form-control"
                  [(ngModel)]="user.city"
                  name="u_city"
-                 type="number"
+                 type="text"
                  required="required">
         </div>
         <input
@@ -43,11 +43,59 @@
           value="Save"
           class="btn btn-primary"
           [disabled] = "!userForm.form.valid">
-
-        <div class="alert-danger row" *ngIf="error">
-          {{error}}
-        </div>
       </form>
+    </div>
+    <div class="col-sm-8" *ngIf="users.length > 0" >
+      <div class="row">
+        <div class="col">
+          <strong>Id</strong>
+        </div>
+        <div class="col">
+          <strong>First Name</strong>
+        </div>
+        <div class="col">
+          <strong>Last Name</strong>
+        </div>
+        <div class="col">
+          <strong>Age</strong>
+        </div>
+        <div class="col">
+          <strong>City</strong>
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row" *ngFor="let u of users">
+        <div *ngIf="u" routerLink="/show/{{u.id}}">
+          <div class="col">
+            {{u.id}}
+          </div>
+          <div class="col">
+            {{u.firstName}}
+          </div>
+          <div class="col">
+            {{u.lastName}}
+          </div>
+          <div class="col">
+            {{u.age}}
+          </div>
+          <div class="col">
+            {{u.city}}
+          </div>
+          <div class="col">
+            <div class="row">
+              <button (click)="deleteUser(u)" class="btn btn-danger" style="width: 80px">Delete</button>
+            </div>
+            <div class="row">
+              <button (click)="editUser(u)" class="btn btn-info" style="width: 80px">Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="text-align: center">
+    <div class="alert-danger row" *ngIf="error">
+      {{error}}
     </div>
   </div>
 </div>
