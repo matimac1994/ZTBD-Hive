@@ -1,3 +1,53 @@
-<p>
-  create works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4" *ngIf="user">
+      <form #userForm="ngForm" (submit)="processForm(task)">
+        <div class="form-group">
+          <label for="u_firstName">First Name</label>
+          <input id="u_firstName"
+                 class="form-control"
+                 [(ngModel)]="user.firstName"
+                 name="u_firstName"
+                 type="text"
+                 required="required">
+        </div>
+        <div class="form-group">
+          <label for="u_lastName">Last Name</label>
+          <input id="u_lastName"
+                 class="form-control"
+                 [(ngModel)]="user.lastName"
+                 name="u_lastName"
+                 type="text"
+                 required="required">
+        </div>
+        <div class="form-group">
+          <label for="u_age">Age</label>
+          <input id="u_age"
+                 class="form-control"
+                 [(ngModel)]="user.age"
+                 name="u_age"
+                 type="number"
+                 required="required">
+        </div>
+        <div class="form-group">
+          <label for="u_city">City</label>
+          <input id="u_city"
+                 class="form-control"
+                 [(ngModel)]="user.city"
+                 name="u_city"
+                 type="number"
+                 required="required">
+        </div>
+        <input
+          type="submit"
+          value="Save"
+          class="btn btn-primary"
+          [disabled] = "!userForm.form.valid">
+
+        <div class="alert-danger row" *ngIf="error">
+          {{error}}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
