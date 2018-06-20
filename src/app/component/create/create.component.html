@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4" *ngIf="user">
-      <form #userForm="ngForm" (submit)="processForm(task)">
+      <form #uForm="ngForm" (submit)="processForm(user)">
         <div class="form-group">
           <label for="u_firstName">First Name</label>
           <input id="u_firstName"
@@ -38,14 +38,14 @@
                  type="text"
                  required="required">
         </div>
-        <input
-          type="submit"
+        <button
           value="Save"
           class="btn btn-primary"
-          [disabled] = "!userForm.form.valid">
+          [disabled]="!uForm.form.valid">Save
+        </button>
       </form>
     </div>
-    <div class="col-sm-8" *ngIf="users.length > 0" >
+    <div class="col-sm-8" *ngIf="users.length > 0">
       <div class="row">
         <div class="col">
           <strong>Id</strong>
@@ -63,39 +63,36 @@
           <strong>City</strong>
         </div>
         <div class="col"></div>
+        <div class="col"></div>
       </div>
-      <div class="row" *ngFor="let u of users">
-        <div *ngIf="u" routerLink="/show/{{u.id}}">
-          <div class="col">
-            {{u.id}}
-          </div>
-          <div class="col">
-            {{u.firstName}}
-          </div>
-          <div class="col">
-            {{u.lastName}}
-          </div>
-          <div class="col">
-            {{u.age}}
-          </div>
-          <div class="col">
-            {{u.city}}
-          </div>
-          <div class="col">
-            <div class="row">
-              <button (click)="deleteUser(u)" class="btn btn-danger" style="width: 80px">Delete</button>
-            </div>
-            <div class="row">
-              <button (click)="editUser(u)" class="btn btn-info" style="width: 80px">Edit</button>
-            </div>
-          </div>
+      <div class="row" *ngFor="let u of users" style="margin-top: 10px;">
+        <div class="col" *ngIf="u" routerLink="/show/{{u.id}}">
+          {{u.id}}
+        </div>
+        <div class="col" *ngIf="u" routerLink="/show/{{u.id}}">
+          {{u.firstName}}
+        </div>
+        <div class="col" *ngIf="u" routerLink="/show/{{u.id}}">
+          {{u.lastName}}
+        </div>
+        <div class="col" *ngIf="u" routerLink="/show/{{u.id}}">
+          {{u.age}}
+        </div>
+        <div class="col" *ngIf="u" routerLink="/show/{{u.id}}">
+          {{u.city}}
+        </div>
+        <div class="col" *ngIf="u">
+          <button (click)="deleteUser(u)" class="btn btn-danger" style="width: 80px">Delete</button>
+        </div>
+        <div class="col" *ngIf="u">
+          <button (click)="editUser(u)" class="btn btn-info" style="width: 80px">Edit</button>
         </div>
       </div>
     </div>
   </div>
-  <div class="row" style="text-align: center">
-    <div class="alert-danger row" *ngIf="error">
-      {{error}}
-    </div>
+</div>
+<div class="row" style="text-align: center">
+  <div class="alert-danger row" *ngIf="error">
+    {{error}}
   </div>
 </div>

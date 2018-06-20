@@ -19,7 +19,7 @@ export class UserService {
   }
 
   getUsers(){
-    return this.http.get<User[]>(this.url + '/user');
+    return this.http.get<User[]>(this.url + '/user/all');
   }
 
   getUserById(id: number){

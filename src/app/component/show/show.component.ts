@@ -3,6 +3,8 @@ import {UserService} from "../../service/user.service";
 import {User} from "../../model/user";
 import {ActivatedRoute} from "@angular/router";
 
+import {Location} from "@angular/common";
+
 @Component({
   selector: 'app-show',
   templateUrl: './show.component.html',

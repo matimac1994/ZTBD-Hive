@@ -7,7 +7,7 @@ import {CreateComponent} from "./component/create/create.component";
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/list',
+    redirectTo: '/create',
     pathMatch: 'full'
   },
   {

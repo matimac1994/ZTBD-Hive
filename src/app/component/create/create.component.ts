@@ -29,6 +29,7 @@ export class CreateComponent implements OnInit {
         e => this.error = e.message
       )
     } else {
+      console.log(user);
       this.userService.saveUser(user).subscribe(
         u => {
           this.users.push(u);
